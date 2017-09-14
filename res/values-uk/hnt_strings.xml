@@ -28,4 +28,8 @@
 
     <string name="no_sim_cluster_switch_title">Приховати неактивну мережу</string>
     <string name="no_sim_cluster_switch_summary">Приховати панель мережі, якщо sim-карта неактивна і вимкнена. Якщо sim-карту не вимкнуто, ця опція не працюватиме</string>
+
+    <!-- Disable QS on secure Lockscreen -->
+    <string name="lockscreen_qs_disabled_title">Швидкі налаштування на екрані блокування</string>
+    <string name="lockscreen_qs_disabled_summary">Вимкнути панель швидких налаштувань на захищеному екрані блокування</string>
 </resources>

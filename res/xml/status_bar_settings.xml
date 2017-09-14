@@ -146,4 +146,9 @@
         android:key="qslayout_settings"
         android:title="@string/qs_tiles_title" />
 
+     <cyanogenmod.preference.SecureSettingSwitchPreference
+        android:key="lockscreen_qs_disabled"
+        android:title="@string/lockscreen_qs_disabled_title"
+        android:summary="@string/lockscreen_qs_disabled_summary" />
+
 </PreferenceScreen>
