@@ -25,4 +25,7 @@
     <string name="qs_rows_portrait_title">Рядки (портретна орієнтація)</string>
     <string name="qs_rows_landscape_title">Рядки (альбомна орієнтація)</string>
     <string name="qs_columns_title">Колонки</string>
+
+    <string name="no_sim_cluster_switch_title">Приховати неактивну мережу</string>
+    <string name="no_sim_cluster_switch_summary">Приховати панель мережі, якщо sim-карта неактивна і вимкнена. Якщо sim-карту не вимкнуто, ця опція не працюватиме</string>
 </resources>

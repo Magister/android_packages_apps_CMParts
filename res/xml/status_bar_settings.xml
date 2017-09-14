@@ -28,6 +28,12 @@
         android:summaryOff="@string/su_indicator_summary_off"
         android:defaultValue="false" />
 
+         <cyanogenmod.preference.SystemSettingSwitchPreference
+            android:key="no_sim_cluster_switch"
+            android:title="@string/no_sim_cluster_switch_title"
+            android:summary="@string/no_sim_cluster_switch_summary"
+            android:defaultValue="false"/>
+
     <cyanogenmod.preference.CMSystemSettingListPreference
         android:key="qs_quick_pulldown"
         android:title="@string/status_bar_quick_qs_pulldown_title"

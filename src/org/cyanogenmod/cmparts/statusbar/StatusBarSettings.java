@@ -19,6 +19,9 @@ package org.cyanogenmod.cmparts.statusbar;
 import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v14.preference.SwitchPreference;
+import android.telephony.TelephonyManager;
+import android.telephony.SubscriptionManager;
 import android.text.format.DateFormat;
 import android.view.View;
 
@@ -35,6 +38,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
+
+    private static final String SIM_EMPTY_SWITCH = "no_sim_cluster_switch";
+    private SubscriptionManager mSm;
+
+    private SwitchPreference mNoSims;
 
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
@@ -72,6 +80,15 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                 (CMSystemSettingListPreference) findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
         mQuickPulldown.setOnPreferenceChangeListener(this);
         updateQuickPulldownSummary(mQuickPulldown.getIntValue(0));
+
+        mNoSims = (SwitchPreference) findPreference(SIM_EMPTY_SWITCH);
+        mSm = (SubscriptionManager) getSystemService(getContext().TELEPHONY_SUBSCRIPTION_SERVICE);
+
+        if (mNoSims != null) { 
+            if (!TelephonyManager.getDefault().isMultiSimEnabled() || mSm.getActiveSubscriptionInfoCount() <= 0){
+                getPreferenceScreen().removePreference(mNoSims);
+            }
+        }
     }
 
     @Override

@@ -25,4 +25,7 @@
     <string name="qs_rows_portrait_title">Rows (portrait)</string>
     <string name="qs_rows_landscape_title">Rows (landscape)</string>
     <string name="qs_columns_title">Columns</string>
+
+    <string name="no_sim_cluster_switch_title">No sim network hide</string>
+    <string name="no_sim_cluster_switch_summary">Hide the network bar if the subscription of sim is inactive and disabled. If sim is not disabled, this switch will not work</string>
 </resources>

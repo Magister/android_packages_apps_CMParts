@@ -25,4 +25,7 @@
     <string name="qs_rows_portrait_title">Строки (портретная ориентация)</string>
     <string name="qs_rows_landscape_title">Строки (альбомная ориентация)</string>
     <string name="qs_columns_title">Колонки</string>
+
+    <string name="no_sim_cluster_switch_title">Скрыть неактивную сеть</string>
+    <string name="no_sim_cluster_switch_summary">Скрыть панель сети, если sim-карта неактивна и выключена. Если sim-карта не выключена, эта опция не будет работать</string>
 </resources>
