@@ -36,4 +36,8 @@
     <!-- Data disabled icon -->
     <string name="data_disabled_icon_title">Show data disabled icon</string>
     <string name="data_disabled_icon_summary">Display the cross sign next to signal bar when data is disabled</string>
+
+    <!-- Qs easy tile add -->
+    <string name="single_tap_tile_add_title">Easy tile add</string>
+    <string name="single_tap_tile_add_summary">Add quick tiles easily from qs customizer by simply tapping on them instead of dragging them</string>
 </resources>
