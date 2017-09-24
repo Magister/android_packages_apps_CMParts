@@ -157,10 +157,22 @@
         android:title="@string/lockscreen_qs_disabled_title"
         android:summary="@string/lockscreen_qs_disabled_summary" />
 
-     <cyanogenmod.preference.SystemSettingSwitchPreference
-        android:key="quick_tile_add"
-        android:title="@string/single_tap_tile_add_title"
-        android:summary="@string/single_tap_tile_add_summary"
-        android:defaultValue="false"/>
+    <PreferenceCategory
+        android:key="quicksettings_tiles"
+        android:title="@string/quicksettings_tiles_category">
+
+        <cyanogenmod.preference.SystemSettingSwitchPreference
+            android:key="quick_tile_add"
+            android:title="@string/single_tap_tile_add_title"
+            android:summary="@string/single_tap_tile_add_summary"
+            android:defaultValue="false"/>
+
+        <cyanogenmod.preference.SecureSettingSwitchPreference
+            android:key="qs_data_advanced"
+            android:title="@string/qs_advanced_data_title"
+            android:summary="@string/qs_advanced_data_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

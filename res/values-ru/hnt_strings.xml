@@ -37,7 +37,13 @@
     <string name="data_disabled_icon_title">Показывать значок выключенной передачи данных</string>
     <string name="data_disabled_icon_summary">Отображать крестик рядом со значком уровня сигнала, когда выключена передача данных</string>
 
+    <string name="quicksettings_tiles_category">Плитки быстрых настроек</string>
+
     <!-- Qs easy tile add -->
     <string name="single_tap_tile_add_title">Быстрое добавление плитки</string>
     <string name="single_tap_tile_add_summary">Добавляйте плитки быстрее из настройщика быстрых настроек простым нажатием на них вместо перетаскивания</string>
+
+    <!-- Advanced data tile -->
+    <string name="qs_advanced_data_title">Плитка Мобильные данные</string>
+    <string name="qs_advanced_data_summary">Включение или выключение мобильных данных одиночным нажатием на плитку</string>
 </resources>
