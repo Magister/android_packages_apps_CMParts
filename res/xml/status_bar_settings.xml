@@ -173,6 +173,12 @@
             android:summary="@string/qs_advanced_data_summary"
             android:defaultValue="false" />
 
+        <cyanogenmod.preference.SecureSettingSwitchPreference
+            android:key="qs_bt_easy_toggle"
+            android:title="@string/qs_advanced_bt_title"
+            android:summary="@string/qs_advanced_bt_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

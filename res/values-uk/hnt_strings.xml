@@ -46,4 +46,8 @@
     <!-- Advanced data tile -->
     <string name="qs_advanced_data_title">Плитка Мобільні дані</string>
     <string name="qs_advanced_data_summary">Увімкнення або вимкнення мобільних даних одинарним натисканням на плитку</string>
+
+    <!-- Advanced bt tile -->
+    <string name="qs_advanced_bt_title">Плитка Bluetooth</string>
+    <string name="qs_advanced_bt_summary">Увімкнення або вимкнення Bluetooth одинарним натисканням на плитку</string>
 </resources>
