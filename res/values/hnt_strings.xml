@@ -50,4 +50,10 @@
     <!-- Advanced bt tile -->
     <string name="qs_advanced_bt_title">Advanced bluetooth tile</string>
     <string name="qs_advanced_bt_summary">Enable one tap action to enable or disable bluetooth</string>
+
+    <!-- Battery fully charged sound -->
+    <string name="battery_fully_charged_sound_enabled_title">Battery fully charged sound</string>
+    <string name="battery_fully_charged_sound_enabled_summary">Play a sound when battery fully charged</string>
+    <string name="battery_fully_charged_sound_ringtone_title">Notification sound</string>
+    <string name="battery_fully_charged_sound_ringtone_silent">Silent</string>
 </resources>

@@ -50,4 +50,10 @@
     <!-- Advanced bt tile -->
     <string name="qs_advanced_bt_title">Плитка Bluetooth</string>
     <string name="qs_advanced_bt_summary">Включение или выключение Bluetooth одиночным нажатием на плитку</string>
+
+    <!-- Battery fully charged sound -->
+    <string name="battery_fully_charged_sound_enabled_title">Звук полного заряда батареи</string>
+    <string name="battery_fully_charged_sound_enabled_summary">Воспроизводить звук, когда батарея полностью заряжена</string>
+    <string name="battery_fully_charged_sound_ringtone_title">Звук уведомления</string>
+    <string name="battery_fully_charged_sound_ringtone_silent">Без звука</string>
 </resources>
