@@ -44,6 +44,8 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.RelativeLayout;
+import android.widget.Button;
 
 import org.cyanogenmod.cmparts.R;
 import org.cyanogenmod.cmparts.notificationlight.ColorPickerView.OnColorChangedListener;
@@ -57,6 +59,8 @@ public class LightSettingsDialog extends AlertDialog implements
     private final static String STATE_KEY_COLOR = "LightSettingsDialog:color";
     // Minimum delay between LED notification updates
     private final static long LED_UPDATE_DELAY_MS = 250;
+
+    private final static int RECOMMENDED_COLORS_COLUMN_NUM = 4;
 
     private ColorPickerView mColorPicker;
     private LinearLayout mColorPanel;
@@ -143,6 +147,10 @@ public class LightSettingsDialog extends AlertDialog implements
 
         mHexColorInput.setOnFocusChangeListener(this);
 
+        String[] colors = getContext().getResources().getStringArray(R.array.led_color_picker_dialog_colors);
+        RelativeLayout baseView = (RelativeLayout)layout.findViewById(R.id.base_view);
+        setUpColorButtons(colors, baseView);
+
         if (onOffChangeable) {
             PulseSpeedAdapter pulseSpeedAdapter = new PulseSpeedAdapter(
                     R.array.notification_pulse_length_entries,
@@ -170,7 +178,7 @@ public class LightSettingsDialog extends AlertDialog implements
         setTitle(R.string.edit_light_settings);
 
         if (!mNotificationManager.doLightsSupport(
-                NotificationManager.LIGHTS_RGB_NOTIFICATION_LED)) {
+            NotificationManager.LIGHTS_RGB_NOTIFICATION_LED)) {
             mColorPicker.setVisibility(View.GONE);
             mColorPanel.setVisibility(View.GONE);
             mLightsDialogDivider.setVisibility(View.GONE);
@@ -178,6 +186,64 @@ public class LightSettingsDialog extends AlertDialog implements
 
         mReadyForLed = true;
         updateLed();
+    }
+
+    private LinearLayout createRecommendedColorsLayout(RelativeLayout baseView) {
+        return (LinearLayout) baseView.findViewById(R.id.recommended_colors);
+    }
+
+    private LinearLayout createRowColorsLayout() {
+        LinearLayout rowColorsLayout = new LinearLayout(getContext());
+
+        rowColorsLayout.setOrientation(LinearLayout.HORIZONTAL);
+        rowColorsLayout.setWeightSum(100.0f);
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        rowColorsLayout.setLayoutParams(layoutParams);
+
+        return rowColorsLayout;
+    }
+
+    private Button createColorButton(String color) {
+        Button button = new Button(getContext());
+
+        button.setBackgroundColor(Color.parseColor("#" + color));
+
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, (int)(50 * scale + 0.5f), 25.0f);
+        //50 - hight in dp, 25.0f - % filling with one button (25 - 4 buttons, must divide 100 without residue)
+        button.setLayoutParams(params);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              mHexColorInput.requestFocus();
+              mHexColorInput.setText(color);
+            }
+        });
+
+        return button;
+    }
+
+    private void setUpColorButtons(String[] colors, RelativeLayout baseView) {
+        LinearLayout recommendedColorsLayout = createRecommendedColorsLayout(baseView);
+
+        int columns_num = RECOMMENDED_COLORS_COLUMN_NUM;
+        int rows_num    = (colors.length + columns_num - 1) / columns_num;
+
+        for (int row = 0; row != rows_num; row++) {
+            LinearLayout rowLayout = createRowColorsLayout();
+            recommendedColorsLayout.addView(rowLayout);
+
+            for (int column = 0; column != columns_num; column++) {
+                int colorIndex = (row * columns_num) + column;
+                if (colorIndex >= colors.length) break;
+                Button button = createColorButton(colors[colorIndex]);
+                rowLayout.addView(button);
+            }
+        }
     }
 
     private AdapterView.OnItemSelectedListener mPulseSelectionListener =
