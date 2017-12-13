@@ -19,9 +19,13 @@ package org.cyanogenmod.cmparts.profiles;
 import android.annotation.Nullable;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ThemeManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -44,6 +48,9 @@ public class SetupTriggersFragment extends SettingsPreferenceFragment {
     TriggerPagerAdapter mAdapter;
     boolean mNewProfileMode;
     int mPreselectedItem;
+
+    private ThemeManager mThemeManager;
+    private int mAccentColor;
 
     public static final String EXTRA_INITIAL_PAGE = "current_item";
 
@@ -102,6 +109,14 @@ public class SetupTriggersFragment extends SettingsPreferenceFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+        final TypedArray ta = getContext().obtainStyledAttributes(new int[]{
+            android.R.attr.colorAccent});
+        mAccentColor = ta.getColor(0, 0);
+        ta.recycle();
+
+        final int accentColor = Settings.Secure.getInt(getContentResolver(),
+                Settings.Secure.THEME_ACCENT_COLOR, 0);
+
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_setup_triggers, container, false);
 
@@ -128,7 +143,15 @@ public class SetupTriggersFragment extends SettingsPreferenceFragment {
         mPager.setAdapter(mAdapter);
 
         PagerTabStrip tabs = (PagerTabStrip) root.findViewById(R.id.tabs);
-        tabs.setTabIndicatorColorResource(R.color.theme_accent);
+        if (!ThemeManager.isOverlayEnabled()) {
+            if (accentColor !=0) {
+                tabs.setTabIndicatorColor(mAccentColor);
+            } else {
+                tabs.setTabIndicatorColorResource(R.color.theme_accent);
+            }
+        } else {
+            tabs.setTabIndicatorColorResource(R.color.theme_accent);
+        }
 
         if (mNewProfileMode) {
             showButtonBar(true);
