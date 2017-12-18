@@ -56,4 +56,7 @@
     <string name="battery_fully_charged_sound_enabled_summary">Play a sound when battery fully charged</string>
     <string name="battery_fully_charged_sound_ringtone_title">Notification sound</string>
     <string name="battery_fully_charged_sound_ringtone_silent">Silent</string>
+
+    <string name="hardware_keys_action_screenshot">Screenshot</string>
+    <string name="hardware_keys_action_partial_screenshot">Partial screenshot</string>
 </resources>

@@ -56,4 +56,7 @@
     <string name="battery_fully_charged_sound_enabled_summary">Грати звук, коли батарея повністю заряджена</string>
     <string name="battery_fully_charged_sound_ringtone_title">Звук сповіщення</string>
     <string name="battery_fully_charged_sound_ringtone_silent">Без звуку</string>
+
+    <string name="hardware_keys_action_screenshot">Знімок екрану</string>
+    <string name="hardware_keys_action_partial_screenshot">Знімок області</string>
 </resources>
